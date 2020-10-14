@@ -22,11 +22,8 @@
 #    #### 2.맨 아래 원반을 목적지 기둥(to)으로 옮기고,
 #    #### 3.다른 기둥에 옮겼던 원반들을 그 위에 얹는다.
 
-# In[3]:
+""" Hanoi_Recursive
 
-
-
- 
 def Hanoi(n, start, destination, other):
  if n == 1:
      print(start, "->", destination)    ##1개의 원반일 때
@@ -36,14 +33,40 @@ def Hanoi(n, start, destination, other):
  Hanoi(n - 1, other, destination, start)     ## 다른 기둥에 옮겼던 우너반들을 그 위에 얹는다.
 
 
-# In[4]:
+"""
 
 
-Hanoi(5,1,2,3)
+
+def dfs(x,y):
+    if x<=-1 or x>=n or y<=-1 or y>=m:
+        return False
+
+    if graph[x][y] == 0:
+        graph[x][y] = 1
+        dfs(x-1,y)
+        dfs(x+1,y)
+        dfs(x,y-1)
+        dfs(x,y+1)
+        return True
+    return False
 
 
-# In[ ]:
+# N, M을 공백을 기준으로 구분하여 입력 받기
+n, m = map(int,input().split())
 
+# 2차원 리스트의 맵 정보 입력 받기
+graph = []
+for i in range(n):
+    graph.append(list(map(int,input())))
 
+#모든 노드(위치)에 대하여 음료수 채우기
+result = 0
+for i in range(n):
+    for j in range(m):
+        #현재 위치에서 DFS 수행
+        if dfs(i,j) == True:
+            result +=1
+
+print(result) #정답 출력
 
 
