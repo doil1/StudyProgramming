@@ -1,8 +1,0 @@
-while True
-    si = int(input())
-    shortest_path = []
-    for exit in exits:
-        path = find_shortest(si,exit)
-        if shortest_path == None or len(shortest_path) > len(path):
-            shortest_path = path
-    print(shortest_path[-1],shortest_path[-2])
