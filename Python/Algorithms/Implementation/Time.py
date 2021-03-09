@@ -28,11 +28,9 @@ minute = 60
 second = 60
 cnt = 0
 
-
-for h in range(hour+1):
-    for min in range(minute):        
-        for sec in range(second):
-            if '3' in str(h)+str(min)+str(sec):
-                cnt+=1
-
+for h in range(hour+1):            
+    for min in range(minute):      
+        for sec in range(second):             
+            if '3' in str(h)+str(min)+str(sec):  # h,min,sec 중 '3'이 하나라도 있으면,
+                cnt+=1                           # cnt+1 증가
 print(cnt) 
