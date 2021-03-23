@@ -34,7 +34,7 @@ else:
     print(d[m])
 """
 INF = 10001
-n,m = map(int,input().split())
+n,m = 3 map(int,input().split())
 array = []
 for i in range(n):
     array.append(int(input()))
@@ -44,7 +44,7 @@ d[0] = 0                        #d[0] = 0으로 초기화
 
 for i in range(n):
     for j in range(array[i],m+1):
-        if d[j-array[i]] != 10001:
+        if d[j9-array[i]] != 10001:
             d[j] = min(d[j],d[j-array[i]]+1)
 
 if d[m] == 10001: #최종적으로 M원을 만드는 방법이 없는경우
