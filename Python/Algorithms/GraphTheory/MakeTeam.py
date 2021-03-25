@@ -41,15 +41,15 @@ def unionParent(parent,a,b):
 
 n,m = map(int,input().split())
 parent = [i for i in range(n+1)]
-string = []
+string = []                         # YES, NO를 저장할 리스트 변수
 for _ in range(m):
-    a,b,c = map(int,input().split())
+    a,b,c = map(int,input().split())    # a = 0 or 1 선택변수,b(연결할 정점1),c(연결할 정점2)
 
-    if a == 1: 
-        if findParent(parent,b) == findParent(parent,c): string.append('YES')
-        else: string.append('NO')
+    if a == 1:                                                               #   a == 1 이면,
+        if findParent(parent,b) == findParent(parent,c): string.append('YES')# 같은 팀이라면 YES를 string 변수에 저장
+        else: string.append('NO')                                            # 다르다면 NO를 string변수에 저장
     else:
-        unionParent(parent,b,c)
+        unionParent(parent,b,c)                                              #그게 아니라면 b와c를 합친다.   
 
 for i in string:
     print(i)
