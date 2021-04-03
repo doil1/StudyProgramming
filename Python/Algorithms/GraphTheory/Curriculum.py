@@ -28,3 +28,45 @@ INPUT:
 OUTPUT:
 ㆍ N개의 강의에 대하여 수강하기까지 걸리는 최소 시간을 한 줄에 하나씩 출력한다.
 """
+from collections import deque
+import sys
+import copy
+
+input = sys.stdin.readline
+v = int(input())
+Indegree = [0]*(v+1)
+graph = [[] for i in range(v+1)]
+time = [0]*(v+1)
+
+for i in range(1,v+1):
+   data = list(map(int,input().split()))
+   time[i] = data[0]
+   for x in data[1:-1]:
+      Indegree[i] +=1
+      graph[x].append(i)
+
+
+def TopologySort():
+   result = copy.deepcopy(time)
+   q = deque()
+
+   for i in range(1,v+1):
+      if Indegree[i] == 0: q.append(i)
+
+   while q:
+      data = q.popleft()
+
+      for i in graph[data]:
+         Indegree[i]-=1
+         result[i] = max(result[i],result[data]+time[i])
+         if Indegree[i] == 0:
+            q.append(i)
+
+   for i in range(1,v+1):
+      print(result[i])
+
+TopologySort()
+
+
+
+
